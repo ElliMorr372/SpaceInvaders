@@ -47,8 +47,8 @@ namespace SpaceInvaders
 
         //Aliens
         int alienSpeed = 5;
-        int alienHeight = 30;
-        int alienWidth = 30;
+        int alienHeight = 15;
+        int alienWidth = 15;
 
         //Button press bools
         bool aDown = false;
@@ -73,11 +73,17 @@ namespace SpaceInvaders
         public Form1()
         {
             InitializeComponent();
-            aliens.Add(new Rectangle(50, 60, alienWidth, alienHeight));
-            aliens.Add(new Rectangle(150, 60, alienWidth, alienHeight));
-            aliens.Add(new Rectangle(250, 60, alienWidth, alienHeight));
-
-
+            aliens.Add(new Rectangle(165, 60, alienWidth, alienHeight));
+            aliens.Add(new Rectangle(185, 60, alienWidth, alienHeight));
+            aliens.Add(new Rectangle(205, 60, alienWidth, alienHeight));
+            aliens.Add(new Rectangle(225, 60, alienWidth, alienHeight));
+            aliens.Add(new Rectangle(245, 60, alienWidth, alienHeight));
+            aliens.Add(new Rectangle(265, 60, alienWidth, alienHeight));
+            aliens.Add(new Rectangle(285, 60, alienWidth, alienHeight));
+            aliens.Add(new Rectangle(305, 60, alienWidth, alienHeight));
+            aliens.Add(new Rectangle(325, 60, alienWidth, alienHeight));
+            aliens.Add(new Rectangle(345, 60, alienWidth, alienHeight));
+            aliens.Add(new Rectangle(365, 60, alienWidth, alienHeight));
         }
 
         public void GameSetup()
@@ -186,26 +192,21 @@ namespace SpaceInvaders
                 aliens[i] = new Rectangle(x, aliens[i].Y, alienWidth, alienHeight);
             }
 
-            //make the aliens bounce off the right side
+            //make the aliens bounce if they hit either wall
             for (int i = 0; i < aliens.Count; i++)
             {
-                if (aliens[i].X > this.Width - aliens[i].Width)
+                if (aliens[i].X > this.Width - aliens[i].Width || aliens[i].X == 0)
                 {
-                    alienSpeed = alienSpeed * -1;
+                    for (int j = 0; j < aliens.Count; j++)
+                    {
+                        alienSpeed = alienSpeed * -1;
+                        int y = aliens[j].Y + alienHeight + 5;
+                        aliens[j] = new Rectangle(aliens[j].X, y, alienWidth, alienHeight);
+                    }
                 }
             }
 
-            //make the aliens bounce off the left side
-            for (int i = 0; i < aliens.Count; i++)
-            {
-                if (alienSpeed == -5 && aliens[i].X == 0)
-                {
-                    alienSpeed = alienSpeed * -1;
-                }
-            }
-
-            // check for button press for player lasers, only allow one at a time
-
+            // check for lasers
             // player 1
             if (wDown == true && p1Laser == false)
             {
@@ -222,6 +223,12 @@ namespace SpaceInvaders
             if (player1Laser.Y < 0)
             {
                 p1Laser = false;
+            }
+
+            if (p1Laser == false)
+            {
+                player1Laser.X = -30;
+                player1Laser.Y = -30;
             }
 
             // player 2
@@ -242,7 +249,30 @@ namespace SpaceInvaders
                 p2Laser = false;
             }
 
-            // check for an alien laser, only one at a time
+            if (p2Laser == false)
+            {
+                player2Laser.X = -30;
+                player2Laser.Y = -30;
+            }
+
+            // aliens
+
+            if (aLaser == true)
+            {
+                alienLaser.Y -= laserSpeed;
+            }
+
+            if (alienLaser.Y > this.Height - alienLaser.Width)
+            {
+                aLaser = false;
+            }
+
+            if (aLaser == false)
+            {
+                alienLaser.X = -30;
+                alienLaser.Y = -30;
+            }
+
 
             // check for player collisions with alien lasers,
             // if they collide take that player's life and reset posiiton,
@@ -251,12 +281,14 @@ namespace SpaceInvaders
             {
                 if (player1.IntersectsWith(alienLaser))
                 {
+                    aLaser = false;
                     player1.X = 260;
                     player1.Y = 335;
                     player1Lives--;
                 }
                 else if (player2.IntersectsWith(alienLaser))
                 {
+                    aLaser = false;
                     player2.X = 338;
                     player2.Y = 335;
                     player2Lives--;
@@ -271,8 +303,6 @@ namespace SpaceInvaders
                 if (aliens[i].IntersectsWith(player1Laser))
                 {
                     p1Laser = false;
-                    player1Laser.X = -30;
-                    player1Laser.Y = -30;
                     aliens.RemoveAt(i);
                     player1Score += 15;
                     p1Score.Text = $"{player1Score}";
@@ -280,8 +310,6 @@ namespace SpaceInvaders
                 else if (aliens[i].IntersectsWith(player2Laser))
                 {
                     p2Laser = false;
-                    player1Laser.X = -30;
-                    player1Laser.Y = -30;
                     aliens.RemoveAt(i);
                     player2Score += 15;
                     p2Score.Text = $"{player2Score}";
@@ -312,26 +340,19 @@ namespace SpaceInvaders
             if (player1Laser.IntersectsWith(safetyBase1) || (player1Laser.IntersectsWith(safetyBase2))
                 || (player1Laser.IntersectsWith(safetyBase3)) || (player1Laser.IntersectsWith(safetyBase4)))
             {
-                player1Laser.X = -30;
-                player1Laser.Y = -30;
                 p1Laser = false;
             }
             else if (player2Laser.IntersectsWith(safetyBase1) || (player2Laser.IntersectsWith(safetyBase2))
                 || (player2Laser.IntersectsWith(safetyBase3)) || (player2Laser.IntersectsWith(safetyBase4)))
             {
-                player2Laser.X = -30;
-                player2Laser.Y = -30;
                 p2Laser = false;
             }
             else if (alienLaser.IntersectsWith(safetyBase1) || (alienLaser.IntersectsWith(safetyBase2))
                 || (alienLaser.IntersectsWith(safetyBase3)) || (player1Laser.IntersectsWith(safetyBase4)))
             {
-                {
-                    player2.X = 338;
-                    player2.Y = 335;
-                    player2Lives--;
-                }
+                aLaser = false;
             }
+            
             Refresh();
         }
 
