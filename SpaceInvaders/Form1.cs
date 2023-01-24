@@ -63,9 +63,7 @@ namespace SpaceInvaders
         bool aLaser = false;
 
         SolidBrush whiteBrush = new SolidBrush(Color.White);
-        Pen whitePen = new Pen(Color.White);
         SolidBrush greenBrush = new SolidBrush(Color.LawnGreen);
-        Pen greenPen = new Pen(Color.LawnGreen);
 
         string gameState = "waiting";
         string gameLevel = "waiting";
@@ -88,26 +86,21 @@ namespace SpaceInvaders
 
         public void GameSetup()
         {
-            // clear outputs and make buttons invisible
-            gameState = "running";
-            titleLabel.Text = "";
-            gameOverLabel.Text = "";
-            earthStateLabel.Text = "";
-            easyLevelButton.Visible = false;
-            mediumLevelButton.Visible = false;
-            hardLevelButton.Visible = false;
-            onePlayerButton.Visible = false;
-            twoPlayerButton.Visible = false;
-
-            // reset scores and enable game loop
-            player1Score = 0000;
-            player2Score = 0000;
-            p1Score.Text = "0000";
-            p2Score.Text = "0000";
+            // set gamestate to waiting, enable game loop, and clear aliens list
+            gameState = "waiting";
             gameLoop.Enabled = true;
-
-            //reset players positions
             aliens.Clear();
+            aliens.Add(new Rectangle(165, 60, alienWidth, alienHeight));
+            aliens.Add(new Rectangle(185, 60, alienWidth, alienHeight));
+            aliens.Add(new Rectangle(205, 60, alienWidth, alienHeight));
+            aliens.Add(new Rectangle(225, 60, alienWidth, alienHeight));
+            aliens.Add(new Rectangle(245, 60, alienWidth, alienHeight));
+            aliens.Add(new Rectangle(265, 60, alienWidth, alienHeight));
+            aliens.Add(new Rectangle(285, 60, alienWidth, alienHeight));
+            aliens.Add(new Rectangle(305, 60, alienWidth, alienHeight));
+            aliens.Add(new Rectangle(325, 60, alienWidth, alienHeight));
+            aliens.Add(new Rectangle(345, 60, alienWidth, alienHeight));
+            aliens.Add(new Rectangle(365, 60, alienWidth, alienHeight));
             Refresh();
         }
 
@@ -191,18 +184,38 @@ namespace SpaceInvaders
                 int x = aliens[i].X + alienSpeed;
                 aliens[i] = new Rectangle(x, aliens[i].Y, alienWidth, alienHeight);
             }
-
-            //make the aliens bounce if they hit either wall
+            
+            // if they collide remove that alien, give point to player, 
+            // remove that laser
             for (int i = 0; i < aliens.Count; i++)
             {
-                if (aliens[i].X > this.Width - aliens[i].Width || aliens[i].X == 0)
+                if (aliens[i].IntersectsWith(player1Laser))
                 {
-                    for (int j = 0; j < aliens.Count; j++)
-                    {
-                        alienSpeed = alienSpeed * -1;
-                        int y = aliens[j].Y + alienHeight + 5;
-                        aliens[j] = new Rectangle(aliens[j].X, y, alienWidth, alienHeight);
-                    }
+                    p1Laser = false;
+                    aliens.RemoveAt(i);
+                    player1Score += 15;
+                    p1Score.Text = $"{player1Score}";
+                    break;
+                }
+                else if (aliens[i].IntersectsWith(player2Laser))
+                {
+                    p2Laser = false;
+                    aliens.RemoveAt(i);
+                    player2Score += 15;
+                    p2Score.Text = $"{player2Score}";
+                    break;
+                }
+            }
+
+            //make the aliens bounce if they hit either wall
+            if (aliens[aliens.Count -1].X > this.Width - alienWidth || aliens[0].X < 0)
+            {
+                alienSpeed = alienSpeed * -1;
+
+                for (int j = 0; j < aliens.Count; j++)
+                {
+                    int y = aliens[j].Y + alienHeight + 5;
+                    aliens[j] = new Rectangle(aliens[j].X, y, alienWidth, alienHeight);
                 }
             }
 
@@ -296,25 +309,7 @@ namespace SpaceInvaders
             }
 
             // check for alien collisions with player lasers,
-            // if they collide remove that alien, give point to player, 
-            // remove that laser
-            for (int i = 0; i < aliens.Count; i++)
-            {
-                if (aliens[i].IntersectsWith(player1Laser))
-                {
-                    p1Laser = false;
-                    aliens.RemoveAt(i);
-                    player1Score += 15;
-                    p1Score.Text = $"{player1Score}";
-                }
-                else if (aliens[i].IntersectsWith(player2Laser))
-                {
-                    p2Laser = false;
-                    aliens.RemoveAt(i);
-                    player2Score += 15;
-                    p2Score.Text = $"{player2Score}";
-                }
-            }
+
 
             // check for player collisions with an alien, remove
             // that alien and take a life from the player, reset player position
@@ -353,6 +348,17 @@ namespace SpaceInvaders
                 aLaser = false;
             }
             
+
+            //check if player lives or all aliens are all gone
+            if (player1Lives == 0 && player2Lives == 0)
+            {
+                gameState = "earthLost";
+            }
+            else if (aliens.Count == 0)
+            {
+                gameState = "earthSaved";
+            }
+
             Refresh();
         }
 
@@ -391,26 +397,38 @@ namespace SpaceInvaders
             this.Focus();
         }
 
+        private void playAgainButton_Click(object sender, EventArgs e)
+        {
+            GameSetup();
+            this.Focus();
+        }
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             if (gameState == "waiting")
             {
+                //Reset variables and titles
+                player1Score = 0000;
+                player2Score = 0000;
                 p1Score.Text = "0000";
                 p2Score.Text = "0000";
                 titleLabel.Text = "SPACE INVADERS";
                 gameOverLabel.Text = "";
                 earthStateLabel.Text = "";
+
+                //Make buttons visable and enabled
                 easyLevelButton.Visible = true;
                 mediumLevelButton.Visible = true;
                 hardLevelButton.Visible = true;
                 onePlayerButton.Visible = true;
                 twoPlayerButton.Visible = true;
+                playAgainButton.Visible = false;
 
                 easyLevelButton.Enabled = true;
                 mediumLevelButton.Enabled = true;
                 hardLevelButton.Enabled = true;
                 onePlayerButton.Enabled = true;
                 twoPlayerButton.Enabled = true;
+                playAgainButton.Enabled = false;
             }
 
             else if (gameState == "1Player" && gameLevel == "easy")
@@ -679,12 +697,14 @@ namespace SpaceInvaders
                 hardLevelButton.Visible = false;
                 onePlayerButton.Visible = false;
                 twoPlayerButton.Visible = false;
+                playAgainButton.Visible = true;
 
                 easyLevelButton.Enabled = false;
                 mediumLevelButton.Enabled = false;
                 hardLevelButton.Enabled = false;
                 onePlayerButton.Enabled = false;
                 twoPlayerButton.Enabled = false;
+                playAgainButton.Enabled = true;
 
                 gameLoop.Enabled = false;
                 titleLabel.Text = "CONGRATULATIONS!";
@@ -698,12 +718,14 @@ namespace SpaceInvaders
                 hardLevelButton.Visible = false;
                 onePlayerButton.Visible = false;
                 twoPlayerButton.Visible = false;
+                playAgainButton.Visible = true;
 
                 easyLevelButton.Enabled = false;
                 mediumLevelButton.Enabled = false;
                 hardLevelButton.Enabled = false;
                 onePlayerButton.Enabled = false;
                 twoPlayerButton.Enabled = false;
+                playAgainButton.Enabled = true;
 
                 gameLoop.Enabled = false;
                 titleLabel.Text = "YOU LOSE.";

@@ -49,6 +49,7 @@
             this.twoPlayerButton = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.screenDividerLabel = new System.Windows.Forms.Label();
+            this.playAgainButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -306,12 +307,29 @@
             this.screenDividerLabel.Size = new System.Drawing.Size(550, 3);
             this.screenDividerLabel.TabIndex = 17;
             // 
+            // playAgainButton
+            // 
+            this.playAgainButton.BackColor = System.Drawing.Color.Black;
+            this.playAgainButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
+            this.playAgainButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGreen;
+            this.playAgainButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.playAgainButton.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playAgainButton.ForeColor = System.Drawing.Color.White;
+            this.playAgainButton.Location = new System.Drawing.Point(198, 310);
+            this.playAgainButton.Name = "playAgainButton";
+            this.playAgainButton.Size = new System.Drawing.Size(169, 39);
+            this.playAgainButton.TabIndex = 18;
+            this.playAgainButton.Text = "Play Again";
+            this.playAgainButton.UseVisualStyleBackColor = false;
+            this.playAgainButton.Click += new System.EventHandler(this.playAgainButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(550, 400);
+            this.Controls.Add(this.playAgainButton);
             this.Controls.Add(this.screenDividerLabel);
             this.Controls.Add(this.twoPlayerButton);
             this.Controls.Add(this.onePlayerButton);
@@ -365,6 +383,7 @@
         private System.Windows.Forms.Button twoPlayerButton;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Label screenDividerLabel;
+        private System.Windows.Forms.Button playAgainButton;
     }
 }
 
