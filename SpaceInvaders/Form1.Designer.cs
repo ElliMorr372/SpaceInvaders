@@ -89,10 +89,10 @@
             this.highscoreLabel.BackColor = System.Drawing.Color.Transparent;
             this.highscoreLabel.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highscoreLabel.ForeColor = System.Drawing.Color.White;
-            this.highscoreLabel.Location = new System.Drawing.Point(218, 1);
+            this.highscoreLabel.Location = new System.Drawing.Point(212, 1);
             this.highscoreLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.highscoreLabel.Name = "highscoreLabel";
-            this.highscoreLabel.Size = new System.Drawing.Size(120, 31);
+            this.highscoreLabel.Size = new System.Drawing.Size(133, 31);
             this.highscoreLabel.TabIndex = 2;
             this.highscoreLabel.Text = "HI-SCORE";
             this.highscoreLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -107,7 +107,7 @@
             this.p1Score.Name = "p1Score";
             this.p1Score.Size = new System.Drawing.Size(158, 31);
             this.p1Score.TabIndex = 3;
-            this.p1Score.Text = "0000";
+            this.p1Score.Text = "00";
             this.p1Score.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // topScore
@@ -120,7 +120,7 @@
             this.topScore.Name = "topScore";
             this.topScore.Size = new System.Drawing.Size(115, 31);
             this.topScore.TabIndex = 4;
-            this.topScore.Text = "0000";
+            this.topScore.Text = "00";
             this.topScore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // p2Score
@@ -133,7 +133,7 @@
             this.p2Score.Name = "p2Score";
             this.p2Score.Size = new System.Drawing.Size(148, 31);
             this.p2Score.TabIndex = 5;
-            this.p2Score.Text = "0000";
+            this.p2Score.Text = "00";
             this.p2Score.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // p1LivesLabel
@@ -167,7 +167,7 @@
             this.levelLabel.BackColor = System.Drawing.Color.Transparent;
             this.levelLabel.Font = new System.Drawing.Font("Courier New", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.levelLabel.ForeColor = System.Drawing.Color.White;
-            this.levelLabel.Location = new System.Drawing.Point(379, 371);
+            this.levelLabel.Location = new System.Drawing.Point(424, 370);
             this.levelLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.levelLabel.Name = "levelLabel";
             this.levelLabel.Size = new System.Drawing.Size(126, 31);
@@ -193,7 +193,7 @@
             this.earthStateLabel.BackColor = System.Drawing.Color.Transparent;
             this.earthStateLabel.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.earthStateLabel.ForeColor = System.Drawing.Color.White;
-            this.earthStateLabel.Location = new System.Drawing.Point(137, 262);
+            this.earthStateLabel.Location = new System.Drawing.Point(144, 262);
             this.earthStateLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.earthStateLabel.Name = "earthStateLabel";
             this.earthStateLabel.Size = new System.Drawing.Size(288, 31);
@@ -309,7 +309,7 @@
             // 
             // playAgainButton
             // 
-            this.playAgainButton.BackColor = System.Drawing.Color.Black;
+            this.playAgainButton.BackColor = System.Drawing.Color.Transparent;
             this.playAgainButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
             this.playAgainButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGreen;
             this.playAgainButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
