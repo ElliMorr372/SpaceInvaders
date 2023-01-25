@@ -512,8 +512,8 @@ namespace SpaceInvaders
 
         private void twoPlayerButton_Click(object sender, EventArgs e)
         {
-            onePlayerButton.BackColor = Color.DodgerBlue;
-            twoPlayerButton.BackColor = Color.Black;
+            onePlayerButton.BackColor = Color.Black;
+            twoPlayerButton.BackColor = Color.DodgerBlue;
             easyLevelButton.BackColor = Color.Black;
             mediumLevelButton.BackColor = Color.Black;
             hardLevelButton.BackColor = Color.Black;
