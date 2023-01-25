@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
 using System.Management.Instrumentation;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
+using System.Reflection.Emit;
 
 // Elliana Morrison: January 24th, 2023
 // A simple recreation of the classic game
@@ -46,7 +48,7 @@ namespace SpaceInvaders
         int player2Lives = 3;
 
         //Aliens
-        int alienSpeed = 20;
+        int alienSpeed = 2;
         int alienHeight = 15;
         int alienWidth = 15;
 
@@ -61,6 +63,10 @@ namespace SpaceInvaders
         bool p1Laser = false;
         bool p2Laser = false;
         bool aLaser = false;
+
+        // Setup random generator, brushes, and gamestate strings
+        Random randGen = new Random();
+        int randValue = 0;
 
         SolidBrush whiteBrush = new SolidBrush(Color.White);
         SolidBrush greenBrush = new SolidBrush(Color.LawnGreen);
@@ -223,8 +229,22 @@ namespace SpaceInvaders
                 int x = aliens[i].X + alienSpeed;
                 aliens[i] = new Rectangle(x, aliens[i].Y, alienWidth, alienHeight);
             }
-            
-            //make the aliens bounce if they hit either wall
+
+            ////change alien speed based on gameLevel - didn't have time to figure out the problems with this alien code:
+            //if (gameLevel == "easy")
+            //{
+            //    alienSpeed = 2;
+            //}
+            //else if (gameLevel == "medium")
+            //{
+            //    alienSpeed = 4;
+            //}
+            //else if (gameLevel == "hard")
+            //{
+            //    alienSpeed = 8;
+            //}
+
+            //make the aliens reverse direction and move down if an alien on either end hits a wall
             if (aliens[aliens.Count -1].X > this.Width - alienWidth || aliens[0].X < 0)
             {
                 alienSpeed = alienSpeed * -1;
@@ -279,30 +299,59 @@ namespace SpaceInvaders
                 p2Laser = false;
             }
 
-            if (p2Laser == false)
+            if(p2Laser == false)
             {
                 player2Laser.X = -30;
                 player2Laser.Y = -30;
             }
 
-            // aliens
+            // aliens - didn't get enough time to figure out the problems with this alien laser code:
+            //randValue = randGen.Next(1, 101);
 
-            if (aLaser == true)
-            {
-                alienLaser.Y -= laserSpeed;
-            }
+            //if (gameLevel == "easy") //shoot alien lasers not that often
+            //{
+            //    if (aLaser == false || randValue < 11)
+            //    {
+            //        alienLaser.X = aliens[0].X + 7;
+            //        alienLaser.Y = aliens[0].Y + 15;
+            //        aLaser = true;
+            //    }
+            //}
+            //else if (gameLevel == "medium") // shoot alien lasers more often
+            //{
+            //    if (aLaser == false || randValue < 21)
+            //    {
+            //        alienLaser.X = aliens[0].X + 7;
+            //        alienLaser.Y = aliens[0].Y + 15;
+            //        aLaser = true;
+            //    }
+            //}
+            //else if (gameLevel == "hard") // shoot alien lasers really often
+            //{
+            //    if (aLaser == false || randValue < 41)
+            //    {
+            //        alienLaser.X = aliens[0].X + 7;
+            //        alienLaser.Y = aliens[0].Y + 15;
+            //        aLaser = true;
+            //    }
+            //}
 
-            if (alienLaser.Y > this.Height - alienLaser.Width)
-            {
-                aLaser = false;
-            }
+            //if (aLaser == true)
+            //{
+            //    alienLaser.Y = laserSpeed + 5;
+            //}
 
-            if (aLaser == false)
-            {
-                alienLaser.X = -30;
-                alienLaser.Y = -30;
-            }
-            
+            //if (alienLaser.Y > this.Height - alienLaser.Height)
+            //{
+            //    aLaser = false;
+            //}
+
+            //if (aLaser == false)
+            //{
+            //    alienLaser.X = -50;
+            //    alienLaser.Y = -50;
+            //}
+
             // Check for alien collisions with player lasers
             // if they collide remove that alien, give point to player, 
             // remove that laser
@@ -432,7 +481,7 @@ namespace SpaceInvaders
                 p2Laser = false;
             }
             else if (alienLaser.IntersectsWith(safetyBase1) || (alienLaser.IntersectsWith(safetyBase2))
-                || (alienLaser.IntersectsWith(safetyBase3)) || (player1Laser.IntersectsWith(safetyBase4)))
+                || (alienLaser.IntersectsWith(safetyBase3)) || (alienLaser.IntersectsWith(safetyBase4)))
             {
                 aLaser = false;
             }
@@ -477,6 +526,17 @@ namespace SpaceInvaders
 
         private void playAgainButton_Click(object sender, EventArgs e)
         {
+            //if(player1Score > highscore)
+            //{
+            //    highscore = player1Score;
+            //    topScoreLabel.Text = $"{highscore}";
+            //}
+            //else if (player2Score > highscore) 
+            //{
+            //    highscore = player2Score;
+            //    topScoreLabel.Text = $"{highscore}";
+            //}
+
             GameSetup();
             this.Focus();
         }
@@ -650,7 +710,7 @@ namespace SpaceInvaders
                 e.Graphics.FillRectangle(greenBrush, player1);
                 e.Graphics.FillRectangle(greenBrush, player2);
 
-                ///draw safety bases
+                ///draw safety basess
                 e.Graphics.FillRectangle(greenBrush, safetyBase1);
                 e.Graphics.FillRectangle(greenBrush, safetyBase2);
                 e.Graphics.FillRectangle(greenBrush, safetyBase3);
@@ -667,9 +727,15 @@ namespace SpaceInvaders
                 {
                     e.Graphics.FillRectangle(greenBrush, player1Laser);
                 }
-                else if (aLaser == true)
+                
+                if (p2Laser == true)
                 {
-                    e.Graphics.FillRectangle(greenBrush, alienLaser);
+                    e.Graphics.FillRectangle(greenBrush, player2Laser);
+                }
+                
+                if (aLaser == true)
+                {
+                    e.Graphics.FillRectangle(whiteBrush, alienLaser);
                 }
             }
             else if (gameState == "2Player" && gameLevel == "medium")
@@ -710,9 +776,15 @@ namespace SpaceInvaders
                 {
                     e.Graphics.FillRectangle(greenBrush, player1Laser);
                 }
-                else if (aLaser == true)
+
+                if (p2Laser == true)
                 {
-                    e.Graphics.FillRectangle(greenBrush, alienLaser);
+                    e.Graphics.FillRectangle(greenBrush, player2Laser);
+                }
+
+                if (aLaser == true)
+                {
+                    e.Graphics.FillRectangle(whiteBrush, alienLaser);
                 }
             }
             else if (gameState == "2Player" && gameLevel == "hard")
@@ -753,9 +825,15 @@ namespace SpaceInvaders
                 {
                     e.Graphics.FillRectangle(greenBrush, player1Laser);
                 }
-                else if (aLaser == true)
+
+                if (p2Laser == true)
                 {
-                    e.Graphics.FillRectangle(greenBrush, alienLaser);
+                    e.Graphics.FillRectangle(greenBrush, player2Laser);
+                }
+
+                if (aLaser == true)
+                {
+                    e.Graphics.FillRectangle(whiteBrush, alienLaser);
                 }
             }
             else if (gameState == "earthSaved")
@@ -781,6 +859,17 @@ namespace SpaceInvaders
                 titleLabel.Text = "CONGRATULATIONS!";
                 gameOverLabel.Text = "GAME OVER.";
                 earthStateLabel.Text = "EARTH WAS SAVED!";
+
+                if (player1Score > highscore)
+                {
+                    highscore = player1Score;
+                    topScoreLabel.Text = $"{highscore}";
+                }
+                else if (player2Score > highscore)
+                {
+                    highscore = player2Score;
+                    topScoreLabel.Text = $"{highscore}";
+                }
             }
             else if (gameState == "earthLost")
             {
@@ -806,6 +895,16 @@ namespace SpaceInvaders
                 gameOverLabel.Text = "GAME OVER.";
                 earthStateLabel.Text = "EARTH WAS LOST.";
 
+                if (player1Score > highscore)
+                {
+                    highscore = player1Score;
+                    topScoreLabel.Text = $"{highscore}";
+                }
+                else if (player2Score > highscore)
+                {
+                    highscore = player2Score;
+                    topScoreLabel.Text = $"{highscore}";
+                }
             }
         }
     }

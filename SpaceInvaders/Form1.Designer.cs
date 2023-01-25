@@ -34,7 +34,7 @@
             this.p2ScoreLabel = new System.Windows.Forms.Label();
             this.highscoreLabel = new System.Windows.Forms.Label();
             this.p1Score = new System.Windows.Forms.Label();
-            this.topScore = new System.Windows.Forms.Label();
+            this.topScoreLabel = new System.Windows.Forms.Label();
             this.p2Score = new System.Windows.Forms.Label();
             this.p1LivesLabel = new System.Windows.Forms.Label();
             this.p2LivesLabel = new System.Windows.Forms.Label();
@@ -110,18 +110,18 @@
             this.p1Score.Text = "00";
             this.p1Score.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // topScore
+            // topScoreLabel
             // 
-            this.topScore.BackColor = System.Drawing.Color.Transparent;
-            this.topScore.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.topScore.ForeColor = System.Drawing.Color.White;
-            this.topScore.Location = new System.Drawing.Point(223, 23);
-            this.topScore.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.topScore.Name = "topScore";
-            this.topScore.Size = new System.Drawing.Size(115, 31);
-            this.topScore.TabIndex = 4;
-            this.topScore.Text = "00";
-            this.topScore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.topScoreLabel.BackColor = System.Drawing.Color.Transparent;
+            this.topScoreLabel.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.topScoreLabel.ForeColor = System.Drawing.Color.White;
+            this.topScoreLabel.Location = new System.Drawing.Point(223, 23);
+            this.topScoreLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.topScoreLabel.Name = "topScoreLabel";
+            this.topScoreLabel.Size = new System.Drawing.Size(115, 31);
+            this.topScoreLabel.TabIndex = 4;
+            this.topScoreLabel.Text = "00";
+            this.topScoreLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // p2Score
             // 
@@ -180,7 +180,7 @@
             this.titleLabel.BackColor = System.Drawing.Color.Transparent;
             this.titleLabel.Font = new System.Drawing.Font("Courier New", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleLabel.ForeColor = System.Drawing.Color.White;
-            this.titleLabel.Location = new System.Drawing.Point(151, 125);
+            this.titleLabel.Location = new System.Drawing.Point(151, 113);
             this.titleLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(265, 164);
@@ -193,7 +193,7 @@
             this.earthStateLabel.BackColor = System.Drawing.Color.Transparent;
             this.earthStateLabel.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.earthStateLabel.ForeColor = System.Drawing.Color.White;
-            this.earthStateLabel.Location = new System.Drawing.Point(144, 262);
+            this.earthStateLabel.Location = new System.Drawing.Point(144, 250);
             this.earthStateLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.earthStateLabel.Name = "earthStateLabel";
             this.earthStateLabel.Size = new System.Drawing.Size(288, 31);
@@ -206,7 +206,7 @@
             this.gameOverLabel.BackColor = System.Drawing.Color.Transparent;
             this.gameOverLabel.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gameOverLabel.ForeColor = System.Drawing.Color.White;
-            this.gameOverLabel.Location = new System.Drawing.Point(200, 119);
+            this.gameOverLabel.Location = new System.Drawing.Point(200, 107);
             this.gameOverLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.gameOverLabel.Name = "gameOverLabel";
             this.gameOverLabel.Size = new System.Drawing.Size(167, 31);
@@ -222,7 +222,7 @@
             this.easyLevelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.easyLevelButton.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.easyLevelButton.ForeColor = System.Drawing.Color.White;
-            this.easyLevelButton.Location = new System.Drawing.Point(403, 127);
+            this.easyLevelButton.Location = new System.Drawing.Point(403, 113);
             this.easyLevelButton.Name = "easyLevelButton";
             this.easyLevelButton.Size = new System.Drawing.Size(125, 39);
             this.easyLevelButton.TabIndex = 12;
@@ -238,7 +238,7 @@
             this.mediumLevelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.mediumLevelButton.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mediumLevelButton.ForeColor = System.Drawing.Color.White;
-            this.mediumLevelButton.Location = new System.Drawing.Point(403, 187);
+            this.mediumLevelButton.Location = new System.Drawing.Point(403, 173);
             this.mediumLevelButton.Name = "mediumLevelButton";
             this.mediumLevelButton.Size = new System.Drawing.Size(125, 39);
             this.mediumLevelButton.TabIndex = 13;
@@ -254,7 +254,7 @@
             this.hardLevelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.hardLevelButton.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hardLevelButton.ForeColor = System.Drawing.Color.White;
-            this.hardLevelButton.Location = new System.Drawing.Point(403, 245);
+            this.hardLevelButton.Location = new System.Drawing.Point(403, 231);
             this.hardLevelButton.Name = "hardLevelButton";
             this.hardLevelButton.Size = new System.Drawing.Size(125, 39);
             this.hardLevelButton.TabIndex = 14;
@@ -270,7 +270,7 @@
             this.onePlayerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.onePlayerButton.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.onePlayerButton.ForeColor = System.Drawing.Color.White;
-            this.onePlayerButton.Location = new System.Drawing.Point(15, 156);
+            this.onePlayerButton.Location = new System.Drawing.Point(15, 140);
             this.onePlayerButton.Name = "onePlayerButton";
             this.onePlayerButton.Size = new System.Drawing.Size(149, 40);
             this.onePlayerButton.TabIndex = 15;
@@ -286,7 +286,7 @@
             this.twoPlayerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.twoPlayerButton.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.twoPlayerButton.ForeColor = System.Drawing.Color.White;
-            this.twoPlayerButton.Location = new System.Drawing.Point(15, 215);
+            this.twoPlayerButton.Location = new System.Drawing.Point(15, 199);
             this.twoPlayerButton.Name = "twoPlayerButton";
             this.twoPlayerButton.Size = new System.Drawing.Size(149, 39);
             this.twoPlayerButton.TabIndex = 16;
@@ -315,7 +315,7 @@
             this.playAgainButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.playAgainButton.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playAgainButton.ForeColor = System.Drawing.Color.White;
-            this.playAgainButton.Location = new System.Drawing.Point(198, 310);
+            this.playAgainButton.Location = new System.Drawing.Point(198, 321);
             this.playAgainButton.Name = "playAgainButton";
             this.playAgainButton.Size = new System.Drawing.Size(169, 39);
             this.playAgainButton.TabIndex = 18;
@@ -343,7 +343,7 @@
             this.Controls.Add(this.p2LivesLabel);
             this.Controls.Add(this.p1LivesLabel);
             this.Controls.Add(this.p2Score);
-            this.Controls.Add(this.topScore);
+            this.Controls.Add(this.topScoreLabel);
             this.Controls.Add(this.p1Score);
             this.Controls.Add(this.highscoreLabel);
             this.Controls.Add(this.p2ScoreLabel);
@@ -368,7 +368,7 @@
         private System.Windows.Forms.Label p2ScoreLabel;
         private System.Windows.Forms.Label highscoreLabel;
         private System.Windows.Forms.Label p1Score;
-        private System.Windows.Forms.Label topScore;
+        private System.Windows.Forms.Label topScoreLabel;
         private System.Windows.Forms.Label p2Score;
         private System.Windows.Forms.Label p1LivesLabel;
         private System.Windows.Forms.Label p2LivesLabel;
