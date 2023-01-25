@@ -48,7 +48,7 @@ namespace SpaceInvaders
         int player2Lives = 3;
 
         //Aliens
-        int alienSpeed = 2;
+        int alienSpeed = 4;
         int alienHeight = 15;
         int alienWidth = 15;
 
@@ -78,8 +78,8 @@ namespace SpaceInvaders
         {
             InitializeComponent();
             //Clear titles
-            p1Score.Text = "00";
-            p2Score.Text = "00";
+            p1ScoreLabel.Text = "00";
+            p2ScoreLabel.Text = "00";
             titleLabel.Text = "SPACE INVADERS";
             gameOverLabel.Text = "";
             earthStateLabel.Text = "";
@@ -110,8 +110,8 @@ namespace SpaceInvaders
             player1Lives = 3;
             player2Lives = 3;
 
-            p1Score.Text = "00";
-            p2Score.Text = "00";
+            p1ScoreLabel.Text = "00";
+            p2ScoreLabel.Text = "00";
             titleLabel.Text = "SPACE INVADERS";
             gameOverLabel.Text = "";
             earthStateLabel.Text = "";
@@ -245,17 +245,19 @@ namespace SpaceInvaders
             //}
 
             //make the aliens reverse direction and move down if an alien on either end hits a wall
-            if (aliens[aliens.Count -1].X > this.Width - alienWidth || aliens[0].X < 0)
+            if (aliens.Count > 0)
             {
-                alienSpeed = alienSpeed * -1;
-
-                for (int j = 0; j < aliens.Count; j++)
+                if (aliens[aliens.Count - 1].X > this.Width - alienWidth || aliens[0].X < 0)
                 {
-                    int y = aliens[j].Y + alienHeight + 5;
-                    aliens[j] = new Rectangle(aliens[j].X, y, alienWidth, alienHeight);
+                    alienSpeed = alienSpeed * -1;
+
+                    for (int j = 0; j < aliens.Count; j++)
+                    {
+                        int y = aliens[j].Y + alienHeight + 5;
+                        aliens[j] = new Rectangle(aliens[j].X, y, alienWidth, alienHeight);
+                    }
                 }
             }
-
             // check for lasers
             // player 1
             if (wDown == true && p1Laser == false)
@@ -352,6 +354,7 @@ namespace SpaceInvaders
             //    alienLaser.Y = -50;
             //}
 
+
             // Check for alien collisions with player lasers
             // if they collide remove that alien, give point to player, 
             // remove that laser
@@ -362,7 +365,7 @@ namespace SpaceInvaders
                     p1Laser = false;
                     aliens.RemoveAt(i);
                     player1Score += 15;
-                    p1Score.Text = $"{player1Score}";
+                    p1ScoreLabel.Text = $"{player1Score}";
                     break;
                 }
                 else if (aliens[i].IntersectsWith(player2Laser))
@@ -370,7 +373,7 @@ namespace SpaceInvaders
                     p2Laser = false;
                     aliens.RemoveAt(i);
                     player2Score += 15;
-                    p2Score.Text = $"{player2Score}";
+                    p2ScoreLabel.Text = $"{player2Score}";
                     break;
                 }
             }
@@ -386,6 +389,7 @@ namespace SpaceInvaders
                     player1.X = 260;
                     player1.Y = 335;
                     player1Lives--;
+                    p1LivesLabel.Text = "player1Lives";
                 }
                 else if (player2.IntersectsWith(alienLaser))
                 {
@@ -393,6 +397,7 @@ namespace SpaceInvaders
                     player2.X = 338;
                     player2.Y = 335;
                     player2Lives--;
+                    p1LivesLabel.Text = "player1Lives";
                 }
             }
 
@@ -422,6 +427,7 @@ namespace SpaceInvaders
                         player1.Y = 335;
                         aliens.RemoveAt(i);
                         player1Lives--;
+                        p1LivesLabel.Text = "player1Lives";
                     }
                     else if (gameState == "2Player")
                     {
@@ -429,6 +435,7 @@ namespace SpaceInvaders
                         player1.Y = 335;
                         aliens.RemoveAt(i);
                         player1Lives--;
+                        p1LivesLabel.Text = "player2Lives";
                     }
                 }
                 else if (player2.IntersectsWith(aliens[i]))
@@ -491,6 +498,13 @@ namespace SpaceInvaders
 
         private void onePlayerButton_Click(object sender, EventArgs e)
         {
+            onePlayerButton.BackColor = Color.Teal;
+            twoPlayerButton.BackColor = Color.Black;
+            easyLevelButton.BackColor = Color.Black;
+            mediumLevelButton.BackColor = Color.Black;
+            hardLevelButton.BackColor = Color.Black;
+            playAgainButton.BackColor = Color.Black;
+
             gameState = "1Player";
             gameLoop.Enabled = true;
             this.Focus();
@@ -498,6 +512,13 @@ namespace SpaceInvaders
 
         private void twoPlayerButton_Click(object sender, EventArgs e)
         {
+            onePlayerButton.BackColor = Color.DodgerBlue;
+            twoPlayerButton.BackColor = Color.Black;
+            easyLevelButton.BackColor = Color.Black;
+            mediumLevelButton.BackColor = Color.Black;
+            hardLevelButton.BackColor = Color.Black;
+            playAgainButton.BackColor = Color.Black;
+
             gameState = "2Player";
             gameLoop.Enabled = true;
             player1.X = 178;
@@ -506,6 +527,13 @@ namespace SpaceInvaders
 
         private void easyLevelButton_Click(object sender, EventArgs e)
         {
+            onePlayerButton.BackColor = Color.Black;
+            twoPlayerButton.BackColor = Color.Black;
+            easyLevelButton.BackColor = Color.Lime;
+            mediumLevelButton.BackColor = Color.Black;
+            hardLevelButton.BackColor = Color.Black;
+            playAgainButton.BackColor = Color.Black;
+
             gameLevel = "easy";
             gameLoop.Enabled = true;
             this.Focus();
@@ -513,12 +541,26 @@ namespace SpaceInvaders
 
         private void mediumLevelButton_Click(object sender, EventArgs e)
         {
+            onePlayerButton.BackColor = Color.Black;
+            twoPlayerButton.BackColor = Color.Black;
+            easyLevelButton.BackColor = Color.Black;
+            mediumLevelButton.BackColor = Color.Yellow;
+            hardLevelButton.BackColor = Color.Black;
+            playAgainButton.BackColor = Color.Black;
+
             gameLevel = "medium";
             gameLoop.Enabled = true;
             this.Focus();
         }
         private void hardLevelButton_Click(object sender, EventArgs e)
         {
+            onePlayerButton.BackColor = Color.Black;
+            twoPlayerButton.BackColor = Color.Black;
+            easyLevelButton.BackColor = Color.Black;
+            mediumLevelButton.BackColor = Color.Black;
+            hardLevelButton.BackColor = Color.Red;
+            playAgainButton.BackColor = Color.Black;
+
             gameLevel = "hard";
             gameLoop.Enabled = true;
             this.Focus();
@@ -526,16 +568,12 @@ namespace SpaceInvaders
 
         private void playAgainButton_Click(object sender, EventArgs e)
         {
-            //if(player1Score > highscore)
-            //{
-            //    highscore = player1Score;
-            //    topScoreLabel.Text = $"{highscore}";
-            //}
-            //else if (player2Score > highscore) 
-            //{
-            //    highscore = player2Score;
-            //    topScoreLabel.Text = $"{highscore}";
-            //}
+            onePlayerButton.BackColor = Color.Black;
+            twoPlayerButton.BackColor = Color.Black;
+            easyLevelButton.BackColor = Color.Black;
+            mediumLevelButton.BackColor = Color.Black;
+            hardLevelButton.BackColor = Color.Black;
+            playAgainButton.BackColor = Color.Lime;
 
             GameSetup();
             this.Focus();
@@ -860,14 +898,19 @@ namespace SpaceInvaders
                 gameOverLabel.Text = "GAME OVER.";
                 earthStateLabel.Text = "EARTH WAS SAVED!";
 
-                if (player1Score > highscore)
+                if (player1Score > highscore && player1Score > player2Score)
                 {
                     highscore = player1Score;
                     topScoreLabel.Text = $"{highscore}";
                 }
-                else if (player2Score > highscore)
+                else if (player2Score > highscore && player2Score > player1Score)
                 {
                     highscore = player2Score;
+                    topScoreLabel.Text = $"{highscore}";
+                }
+                else if (player1Score == player2Score)
+                {
+                    highscore = player1Score;
                     topScoreLabel.Text = $"{highscore}";
                 }
             }
@@ -895,14 +938,19 @@ namespace SpaceInvaders
                 gameOverLabel.Text = "GAME OVER.";
                 earthStateLabel.Text = "EARTH WAS LOST.";
 
-                if (player1Score > highscore)
+                if (player1Score > highscore && player1Score > player2Score)
                 {
                     highscore = player1Score;
                     topScoreLabel.Text = $"{highscore}";
                 }
-                else if (player2Score > highscore)
+                else if (player2Score > highscore && player2Score > player1Score)
                 {
                     highscore = player2Score;
+                    topScoreLabel.Text = $"{highscore}";
+                }
+                else if (player1Score == player2Score)
+                {
+                    highscore = player1Score;
                     topScoreLabel.Text = $"{highscore}";
                 }
             }

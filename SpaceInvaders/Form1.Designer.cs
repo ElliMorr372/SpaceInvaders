@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gameLoop = new System.Windows.Forms.Timer(this.components);
-            this.p1ScoreLabel = new System.Windows.Forms.Label();
-            this.p2ScoreLabel = new System.Windows.Forms.Label();
+            this.p1Label = new System.Windows.Forms.Label();
+            this.p2Label = new System.Windows.Forms.Label();
             this.highscoreLabel = new System.Windows.Forms.Label();
-            this.p1Score = new System.Windows.Forms.Label();
+            this.p1ScoreLabel = new System.Windows.Forms.Label();
             this.topScoreLabel = new System.Windows.Forms.Label();
-            this.p2Score = new System.Windows.Forms.Label();
+            this.p2ScoreLabel = new System.Windows.Forms.Label();
             this.p1LivesLabel = new System.Windows.Forms.Label();
             this.p2LivesLabel = new System.Windows.Forms.Label();
             this.levelLabel = new System.Windows.Forms.Label();
@@ -58,31 +58,31 @@
             this.gameLoop.Interval = 20;
             this.gameLoop.Tick += new System.EventHandler(this.gameLoop_Tick);
             // 
-            // p1ScoreLabel
+            // p1Label
             // 
-            this.p1ScoreLabel.BackColor = System.Drawing.Color.Transparent;
-            this.p1ScoreLabel.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.p1ScoreLabel.ForeColor = System.Drawing.Color.White;
-            this.p1ScoreLabel.Location = new System.Drawing.Point(2, -2);
-            this.p1ScoreLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.p1ScoreLabel.Name = "p1ScoreLabel";
-            this.p1ScoreLabel.Size = new System.Drawing.Size(163, 31);
-            this.p1ScoreLabel.TabIndex = 0;
-            this.p1ScoreLabel.Text = "PLAYER (1)";
-            this.p1ScoreLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.p1Label.BackColor = System.Drawing.Color.Transparent;
+            this.p1Label.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.p1Label.ForeColor = System.Drawing.Color.White;
+            this.p1Label.Location = new System.Drawing.Point(2, -2);
+            this.p1Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.p1Label.Name = "p1Label";
+            this.p1Label.Size = new System.Drawing.Size(163, 31);
+            this.p1Label.TabIndex = 0;
+            this.p1Label.Text = "PLAYER (1)";
+            this.p1Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // p2ScoreLabel
+            // p2Label
             // 
-            this.p2ScoreLabel.BackColor = System.Drawing.Color.Transparent;
-            this.p2ScoreLabel.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.p2ScoreLabel.ForeColor = System.Drawing.Color.White;
-            this.p2ScoreLabel.Location = new System.Drawing.Point(402, -1);
-            this.p2ScoreLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.p2ScoreLabel.Name = "p2ScoreLabel";
-            this.p2ScoreLabel.Size = new System.Drawing.Size(153, 31);
-            this.p2ScoreLabel.TabIndex = 1;
-            this.p2ScoreLabel.Text = "PLAYER (2)";
-            this.p2ScoreLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.p2Label.BackColor = System.Drawing.Color.Transparent;
+            this.p2Label.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.p2Label.ForeColor = System.Drawing.Color.White;
+            this.p2Label.Location = new System.Drawing.Point(402, -1);
+            this.p2Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.p2Label.Name = "p2Label";
+            this.p2Label.Size = new System.Drawing.Size(153, 31);
+            this.p2Label.TabIndex = 1;
+            this.p2Label.Text = "PLAYER (2)";
+            this.p2Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // highscoreLabel
             // 
@@ -97,18 +97,18 @@
             this.highscoreLabel.Text = "HI-SCORE";
             this.highscoreLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // p1Score
+            // p1ScoreLabel
             // 
-            this.p1Score.BackColor = System.Drawing.Color.Transparent;
-            this.p1Score.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.p1Score.ForeColor = System.Drawing.Color.White;
-            this.p1Score.Location = new System.Drawing.Point(7, 23);
-            this.p1Score.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.p1Score.Name = "p1Score";
-            this.p1Score.Size = new System.Drawing.Size(158, 31);
-            this.p1Score.TabIndex = 3;
-            this.p1Score.Text = "00";
-            this.p1Score.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.p1ScoreLabel.BackColor = System.Drawing.Color.Transparent;
+            this.p1ScoreLabel.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.p1ScoreLabel.ForeColor = System.Drawing.Color.White;
+            this.p1ScoreLabel.Location = new System.Drawing.Point(7, 23);
+            this.p1ScoreLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.p1ScoreLabel.Name = "p1ScoreLabel";
+            this.p1ScoreLabel.Size = new System.Drawing.Size(158, 31);
+            this.p1ScoreLabel.TabIndex = 3;
+            this.p1ScoreLabel.Text = "00";
+            this.p1ScoreLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // topScoreLabel
             // 
@@ -123,18 +123,18 @@
             this.topScoreLabel.Text = "00";
             this.topScoreLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // p2Score
+            // p2ScoreLabel
             // 
-            this.p2Score.BackColor = System.Drawing.Color.Transparent;
-            this.p2Score.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.p2Score.ForeColor = System.Drawing.Color.White;
-            this.p2Score.Location = new System.Drawing.Point(407, 23);
-            this.p2Score.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.p2Score.Name = "p2Score";
-            this.p2Score.Size = new System.Drawing.Size(148, 31);
-            this.p2Score.TabIndex = 5;
-            this.p2Score.Text = "00";
-            this.p2Score.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.p2ScoreLabel.BackColor = System.Drawing.Color.Transparent;
+            this.p2ScoreLabel.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.p2ScoreLabel.ForeColor = System.Drawing.Color.White;
+            this.p2ScoreLabel.Location = new System.Drawing.Point(407, 23);
+            this.p2ScoreLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.p2ScoreLabel.Name = "p2ScoreLabel";
+            this.p2ScoreLabel.Size = new System.Drawing.Size(148, 31);
+            this.p2ScoreLabel.TabIndex = 5;
+            this.p2ScoreLabel.Text = "00";
+            this.p2ScoreLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // p1LivesLabel
             // 
@@ -342,12 +342,12 @@
             this.Controls.Add(this.levelLabel);
             this.Controls.Add(this.p2LivesLabel);
             this.Controls.Add(this.p1LivesLabel);
-            this.Controls.Add(this.p2Score);
-            this.Controls.Add(this.topScoreLabel);
-            this.Controls.Add(this.p1Score);
-            this.Controls.Add(this.highscoreLabel);
             this.Controls.Add(this.p2ScoreLabel);
+            this.Controls.Add(this.topScoreLabel);
             this.Controls.Add(this.p1ScoreLabel);
+            this.Controls.Add(this.highscoreLabel);
+            this.Controls.Add(this.p2Label);
+            this.Controls.Add(this.p1Label);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -364,12 +364,12 @@
         #endregion
 
         private System.Windows.Forms.Timer gameLoop;
-        private System.Windows.Forms.Label p1ScoreLabel;
-        private System.Windows.Forms.Label p2ScoreLabel;
+        private System.Windows.Forms.Label p1Label;
+        private System.Windows.Forms.Label p2Label;
         private System.Windows.Forms.Label highscoreLabel;
-        private System.Windows.Forms.Label p1Score;
+        private System.Windows.Forms.Label p1ScoreLabel;
         private System.Windows.Forms.Label topScoreLabel;
-        private System.Windows.Forms.Label p2Score;
+        private System.Windows.Forms.Label p2ScoreLabel;
         private System.Windows.Forms.Label p1LivesLabel;
         private System.Windows.Forms.Label p2LivesLabel;
         private System.Windows.Forms.Label levelLabel;
